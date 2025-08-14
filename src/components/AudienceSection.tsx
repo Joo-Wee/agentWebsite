@@ -56,7 +56,7 @@ export const AudienceSection = () => {
   };
 
   return (
-    <section className="py-24 px-6 bg-deep-black">
+    <section className="pt-24 pb-4 px-6 bg-deep-black">
       <div className="container mx-auto max-w-6xl">
         {/* Personas */}
         <div className="text-center mb-16">

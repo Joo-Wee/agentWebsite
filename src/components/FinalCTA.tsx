@@ -3,7 +3,7 @@ import { ArrowRight } from "lucide-react";
 
 const FinalCTA = () => {
   return (
-    <section className="py-24 px-6 bg-gradient-to-b from-background to-muted/10">
+    <section className="py-6 px-6 bg-gradient-to-b from-background to-muted/10">
       <div className="max-w-4xl mx-auto text-center">
         {/* Signal Elements */}
         <div className="relative mb-12">

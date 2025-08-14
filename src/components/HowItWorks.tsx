@@ -20,7 +20,7 @@ const HowItWorks = () => {
   ];
 
   return (
-    <section className="py-24 px-6 bg-gradient-to-b from-background to-muted/10">
+    <section className="py-2 px-6 bg-gradient-to-b from-background to-muted/10">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-6">

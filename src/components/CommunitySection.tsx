@@ -4,7 +4,7 @@ import { MessageCircle, Globe, Users, ArrowRight, ExternalLink } from "lucide-re
 
 export const CommunitySection = () => {
   return (
-    <section id="community" className="py-24 px-6 bg-deep-black">
+    <section id="community" className="px-6 bg-deep-black">
       <div className="container mx-auto max-w-6xl">
         <div className="text-center mb-16">
           <h2 className="font-cinzel text-4xl md:text-5xl font-bold text-pure-white mb-6">

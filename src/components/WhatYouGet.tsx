@@ -41,7 +41,7 @@ const WhatYouGet = () => {
   ];
 
   return (
-    <section className="py-24 px-6 bg-gradient-to-b from-muted/5 to-background">
+    <section className="pt-24 pb-2 px-6 bg-gradient-to-b from-muted/5 to-background">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
