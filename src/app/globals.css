@@ -2,33 +2,111 @@
 
 :root {
   --background: 222 10% 5%;
-  --foreground: 0 0% 98%;
-  --card: 222 12% 8%;
-  --card-foreground: 0 0% 95%;
-  --popover: 222 12% 8%;
-  --popover-foreground: 0 0% 95%;
-  --primary: 142 76% 45%;
-  --primary-foreground: 222 10% 5%;
-  --secondary: 222 15% 12%;
-  --secondary-foreground: 0 0% 85%;
-  --muted: 222 15% 15%;
-  --muted-foreground: 215 15% 60%;
-  --accent: 142 76% 45%;
-  --accent-foreground: 222 10% 5%;
-  --destructive: 0 84% 60%;
-  --destructive-foreground: 0 0% 98%;
-  --border: 222 15% 18%;
-  --input: 222 15% 18%;
-  --ring: 142 76% 45%;
-  --radius: 0.75rem;
-  
-  /* Alpha Alith Custom Variables */
-  --alpha-green: 142 76% 45%;
-  --alpha-green-dark: 142 76% 35%;
-  --alpha-green-light: 142 76% 55%;
-  --alpha-charcoal: 222 12% 8%;
-  --alpha-black: 222 10% 5%;
-  --alpha-gray: 215 15% 60%;
+    --foreground: 0 0% 98%;
+
+    --card: 222 12% 8%;
+    --card-foreground: 0 0% 95%;
+
+    --popover: 222 12% 8%;
+    --popover-foreground: 0 0% 95%;
+
+    --primary: 191 100% 50%;
+    --primary-foreground: 222 10% 5%;
+
+    --secondary: 222 15% 12%;
+    --secondary-foreground: 0 0% 85%;
+
+    --muted: 222 15% 15%;
+    --muted-foreground: 215 15% 60%;
+
+    --accent: 191 100% 50%;
+    --accent-foreground: 222 10% 5%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 222 15% 18%;
+    --input: 222 15% 18%;
+    --ring: 191 100% 50%;
+
+    --radius: 0.75rem;
+    
+    /* Alpha Alith Custom Variables */
+    --alpha-green: 191 100% 50%;
+    --alpha-green-dark: 191 100% 40%;
+    --alpha-green-light: 191 100% 60%;
+    --alpha-cyan: 191 100% 50%;
+    --alpha-charcoal: 222 12% 8%;
+    --alpha-black: 222 10% 5%;
+    --alpha-gray: 215 15% 60%;
+    
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--alpha-green)), hsl(var(--alpha-green-dark)));
+    --gradient-hero: linear-gradient(180deg, hsl(var(--background)), hsl(var(--alpha-charcoal)));
+    --gradient-glow: radial-gradient(circle at center, hsl(var(--alpha-green) / 0.1), transparent);
+    
+    /* Shadows & Effects */
+    --shadow-glow: 0 0 50px hsl(var(--alpha-green) / 0.3);
+    --shadow-card: 0 10px 30px -10px hsl(0 0% 0% / 0.5);
+    
+    /* Animations */
+    --pulse-duration: 2s;
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+
+}
+
+.dark {
+  --background: 222.2 84% 4.9%;
+  --foreground: 210 40% 98%;
+
+  --card: 222.2 84% 4.9%;
+  --card-foreground: 210 40% 98%;
+
+  --popover: 222.2 84% 4.9%;
+  --popover-foreground: 210 40% 98%;
+
+  --primary: 210 40% 98%;
+  --primary-foreground: 222.2 47.4% 11.2%;
+
+  --secondary: 217.2 32.6% 17.5%;
+  --secondary-foreground: 210 40% 98%;
+
+  --muted: 217.2 32.6% 17.5%;
+  --muted-foreground: 215 20.2% 65.1%;
+
+  --accent: 217.2 32.6% 17.5%;
+  --accent-foreground: 210 40% 98%;
+
+  --destructive: 0 62.8% 30.6%;
+  --destructive-foreground: 210 40% 98%;
+
+  --border: 217.2 32.6% 17.5%;
+  --input: 217.2 32.6% 17.5%;
+  --ring: 212.7 26.8% 83.9%;
+  --sidebar-background: 240 5.9% 10%;
+  --sidebar-foreground: 240 4.8% 95.9%;
+  --sidebar-primary: 224.3 76.3% 48%;
+  --sidebar-primary-foreground: 0 0% 100%;
+  --sidebar-accent: 240 3.7% 15.9%;
+  --sidebar-accent-foreground: 240 4.8% 95.9%;
+  --sidebar-border: 240 3.7% 15.9%;
+  --sidebar-ring: 217.2 91.2% 59.8%;
 }
 
 @theme inline {
@@ -74,30 +152,6 @@
   --spacing-32: 8rem;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-  }
-}
-
 @layer base {
   * {
     @apply border-border;
@@ -133,17 +187,13 @@
   }
 
   /* Alpha Alith Custom Components */
+  /* Alpha Alith Custom Components */
   .alpha-button-primary {
-    @apply bg-gradient-to-r from-primary to-accent text-primary-foreground font-semibold px-8 py-4 rounded-lg transition-all duration-300 hover:shadow-[0_0_30px_hsl(var(--primary)/0.5)] hover:scale-105;
-    box-shadow: 0 4px 15px hsl(var(--primary) / 0.3);
-  }
-  
-  .alpha-button-primary:hover {
-    @apply -translate-y-0.5;
+    @apply bg-gradient-to-r from-primary to-accent text-primary-foreground font-semibold px-8 py-4 rounded-lg transition-all duration-300 hover:shadow-[0_0_30px_hsl(var(--alpha-green)/0.5)] hover:scale-105;
   }
   
   .alpha-button-secondary {
-    @apply border-2 border-primary text-primary bg-transparent font-semibold px-8 py-4 rounded-lg transition-all duration-300 hover:bg-primary hover:text-primary-foreground hover:shadow-[0_0_20px_hsl(var(--primary)/0.3)] hover:-translate-y-0.5;
+    @apply border-2 border-primary text-primary bg-transparent font-semibold px-8 py-4 rounded-lg transition-all duration-300 hover:bg-primary hover:text-primary-foreground hover:shadow-[0_0_20px_hsl(var(--alpha-green)/0.3)];
   }
   
   .alpha-card {
@@ -151,15 +201,14 @@
   }
   
   .alpha-glow {
-    @apply relative;
-    filter: drop-shadow(0 0 20px hsl(var(--primary) / 0.3));
+    @apply relative before:absolute before:inset-0 before:bg-gradient-to-r before:from-primary/20 before:to-accent/20 before:blur-3xl before:-z-10;
   }
   
   .signal-pulse {
     @apply animate-pulse;
     animation: signal-pulse 2s ease-in-out infinite;
   }
-  
+
   .animate-glow {
     animation: glow-pulse 2s ease-in-out infinite;
   }
@@ -168,24 +217,19 @@
 @layer utilities {
   /* Keyframes */
   @keyframes signal-pulse {
-    0%, 100% {
-      opacity: 1;
-      transform: scale(1);
-    }
-    50% {
-      opacity: 0.5;
-      transform: scale(1.2);
-    }
+    0%, 100% { opacity: 0.3; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.05); }
   }
   
   @keyframes glow-pulse {
-    0%, 100% {
-      box-shadow: 0 0 20px hsl(var(--primary) / 0.5);
-    }
-    50% {
-      box-shadow: 0 0 40px hsl(var(--primary) / 0.8);
-    }
+    0%, 100% { box-shadow: 0 0 20px hsl(var(--alpha-green) / 0.3); }
+    50% { box-shadow: 0 0 40px hsl(var(--alpha-green) / 0.6); }
   }
+  
+  .animate-glow {
+    animation: glow-pulse 3s ease-in-out infinite;
+  }
+
   
   @keyframes logo-spin {
     from {
