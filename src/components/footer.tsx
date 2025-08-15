@@ -17,7 +17,7 @@ const Footer = () => {
     {
       title: "Company",
       links: [
-        { name: "About", href: "#about" },
+        { name: "About", href: "#how-it-works" },
         { name: "Contact", href: "mailto:alphaalith@gmail.com" }
       ]
     },
