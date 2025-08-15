@@ -1,4 +1,5 @@
 
+import Header from "@/components/header";
 import Hero from "@/components/Hero";
 import HowItWorks from "@/components/HowItWorks";
 import WhatYouGet from "@/components/WhatYouGet";
@@ -6,10 +7,13 @@ import FinalCTA from "@/components/FinalCTA";
 import { AudienceSection } from "@/components/AudienceSection";
 import { CommunitySection } from "@/components/CommunitySection";
 import { WhyItMattersSection } from "@/components/WhyItMattersSection";
+import Footer from "@/components/footer";
+// import { Header } from "@radix-ui/react-accordion";
 
 export default function Home() {
   return (
     <div className="min-h-screen">
+      <Header />
       <Hero />
       <HowItWorks />
       <AudienceSection />
@@ -17,6 +21,7 @@ export default function Home() {
       <WhatYouGet />
       <WhyItMattersSection />
       <FinalCTA />
+      <Footer />
     </div>
   );
 }
