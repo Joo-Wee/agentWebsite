@@ -25,17 +25,6 @@ const Hero = () => {
       
       {/* Main Content */}
       <div className="relative z-10 text-center max-w-6xl mx-auto px-6">
-        {/* Logo */}
-        <div className="alpha-glow mb-8">
-          <Image 
-            src={alphaLogo}
-            alt="Alpha Alith" 
-            width={96}
-            height={96}
-            className="w-24 h-24 mx-auto mb-6 rounded-full animate-glow"
-          />
-        </div>
-        
         {/* Main Heading */}
         <h1 className="text-6xl md:text-8xl font-bold mb-6 tracking-tight">
           Cut Through the{" "}
