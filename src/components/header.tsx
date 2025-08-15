@@ -5,6 +5,7 @@ import { NavigationMenu, NavigationMenuItem, NavigationMenuList, NavigationMenuT
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import alphaLogo from "@/assets/Alpha.jpg";
 
 
@@ -12,11 +13,11 @@ const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const navItems = [
-    { name: "Home", href: "#home" },
-    { name: "How It Works", href: "#how-it-works" },
-    { name: "Features", href: "#features" },
-    { name: "Signals", href: "#signals" },
-    { name: "Contact", href: "mailto:alphaalith@gmail.com" }
+    { name: "Home", href: "/", isRoute: true },
+    { name: "How It Works", href: "/#how-it-works", isRoute: true },
+    { name: "Features", href: "/#features", isRoute: true },
+    { name: "Signals", href: "/signals", isRoute: true },
+    { name: "Contact", href: "mailto:alphaalith@gmail.com", isRoute: false }
   ];
 
   return (
@@ -24,8 +25,8 @@ const Header = () => {
       <div className="max-w-7xl mx-auto px-6">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <div className="flex items-center space-x-3">
-          <Image 
+          <Link href="/" className="flex items-center space-x-3 hover:opacity-80 transition-opacity">
+            <Image 
               src={alphaLogo}
               alt="Alpha Alith" 
               width={32}
@@ -33,19 +34,28 @@ const Header = () => {
               className="h-8 w-auto"
             />
             <span className="text-xl font-bold text-primary">Alpha Alith</span>
-          </div>
+          </Link>
 
           {/* Desktop Navigation */}
           <NavigationMenu className="hidden md:flex">
             <NavigationMenuList>
               {navItems.map((item) => (
                 <NavigationMenuItem key={item.name}>
-                  <a 
-                    href={item.href}
-                    className={navigationMenuTriggerStyle()}
-                  >
-                    {item.name}
-                  </a>
+                  {item.isRoute ? (
+                    <Link 
+                      href={item.href}
+                      className={navigationMenuTriggerStyle()}
+                    >
+                      {item.name}
+                    </Link>
+                  ) : (
+                    <a 
+                      href={item.href}
+                      className={navigationMenuTriggerStyle()}
+                    >
+                      {item.name}
+                    </a>
+                  )}
                 </NavigationMenuItem>
               ))}
             </NavigationMenuList>
@@ -74,14 +84,25 @@ const Header = () => {
           <div className="md:hidden py-4 border-t border-border">
             <nav className="flex flex-col space-y-2">
               {navItems.map((item) => (
-                <a
-                  key={item.name}
-                  href={item.href}
-                  className="px-3 py-2 rounded-md hover:bg-accent transition-colors"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  {item.name}
-                </a>
+                item.isRoute ? (
+                  <Link
+                    key={item.name}
+                    href={item.href}
+                    className="px-3 py-2 rounded-md hover:bg-accent transition-colors"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    {item.name}
+                  </Link>
+                ) : (
+                  <a
+                    key={item.name}
+                    href={item.href}
+                    className="px-3 py-2 rounded-md hover:bg-accent transition-colors"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    {item.name}
+                  </a>
+                )
               ))}
               <div className="flex flex-col space-y-2 pt-4 border-t border-border mt-4">
                 <a href="https://t.me/AlphaAlithSignalBot">

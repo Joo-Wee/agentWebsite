@@ -54,9 +54,11 @@ const Hero = () => {
               Get Alerts
             </Button>
           </a>
-          <Button className="alpha-button-secondary text-lg">
-            Explore Signals
-          </Button>
+          <a href="signals">
+            <Button className="alpha-button-secondary text-lg">
+              Explore Signals
+            </Button>
+          </a>
         </div>
       </div>
       

@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { X, Mail } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 import alphaLogo from "@/assets/Alpha.jpg";
 // ... existing code ...
 
@@ -10,22 +11,22 @@ const Footer = () => {
     {
       title: "Product",
       links: [
-        { name: "Features", href: "#features" },
-        { name: "Signals", href: "#signals" }
+        { name: "Features", href: "/#features", isRoute: true },
+        { name: "Signals", href: "/signals", isRoute: true }
       ]
     },
     {
       title: "Company",
       links: [
-        { name: "About", href: "#how-it-works" },
-        { name: "Contact", href: "mailto:alphaalith@gmail.com" }
+        { name: "About", href: "/#how-it-works", isRoute: true },
+        { name: "Contact", href: "mailto:alphaalith@gmail.com", isRoute: false }
       ]
     },
     {
       title: "Resources",
       links: [
-        { name: "Documentation", href: "#docs" },
-        { name: "Community", href: "https://t.me/alphaalith" }
+        { name: "Documentation", href: "#docs", isRoute: false },
+        { name: "Community", href: "https://t.me/alphaalith", isRoute: false }
       ]
     }
   ];
@@ -78,12 +79,21 @@ const Footer = () => {
               <ul className="space-y-3">
                 {section.links.map((link) => (
                   <li key={link.name}>
-                    <a
-                      href={link.href}
-                      className="text-muted-foreground hover:text-foreground transition-colors"
-                    >
-                      {link.name}
-                    </a>
+                    {link.isRoute ? (
+                      <Link
+                        href={link.href}
+                        className="text-muted-foreground hover:text-foreground transition-colors"
+                      >
+                        {link.name}
+                      </Link>
+                    ) : (
+                      <a
+                        href={link.href}
+                        className="text-muted-foreground hover:text-foreground transition-colors"
+                      >
+                        {link.name}
+                      </a>
+                    )}
                   </li>
                 ))}
               </ul>
