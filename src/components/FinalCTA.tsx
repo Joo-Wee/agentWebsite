@@ -25,13 +25,12 @@ const FinalCTA = () => {
         </p>
         
         <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-16">
-          <Button className="alpha-button-primary text-xl px-12 py-6 group">
-            Start Free
-            <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
-          </Button>
-          <Button className="alpha-button-secondary text-xl px-12 py-6">
-            View Pricing
-          </Button>
+          <a href="https://t.me/AlphaAlithSignalBot">
+            <Button className="alpha-button-primary text-xl px-12 py-6 group">
+              Start Free
+              <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
+            </Button>
+          </a>
         </div>
         
         {/* Trust Indicators */}

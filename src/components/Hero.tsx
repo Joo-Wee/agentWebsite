@@ -1,11 +1,11 @@
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
-import heroBackground from "@/assets/hero-background.jpg";
+import heroBackground from "@/assets/gorilla-hero-background.jpg";
 import alphaLogo from "@/assets/Alpha.jpg";
 
 const Hero = () => {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background Image with Overlay */}
       <div 
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
@@ -60,9 +60,11 @@ const Hero = () => {
         
         {/* CTA Buttons */}
         <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
-          <Button className="alpha-button-primary text-lg">
-            Get Alerts
-          </Button>
+          <a href="https://t.me/AlphaAlithSignalBot">
+            <Button className="alpha-button-primary text-lg">
+              Get Alerts
+            </Button>
+          </a>
           <Button className="alpha-button-secondary text-lg">
             Explore Signals
           </Button>

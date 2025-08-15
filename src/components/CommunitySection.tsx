@@ -28,10 +28,12 @@ export const CommunitySection = () => {
             <p className="text-muted-foreground mb-6">
               Real-time alerts, community discussions, and exclusive alpha drops.
             </p>
-            <Button variant="default" className="w-full">
-              Join Telegram
-              <ExternalLink className="w-4 h-4 ml-2" />
-            </Button>
+            <a href="https://t.me/alphaalith">
+              <Button variant="default" className="w-full">
+                Join Telegram
+                <ExternalLink className="w-4 h-4 ml-2" />
+              </Button>
+            </a>
           </Card>
           
           <Card className="p-8 bg-iron-gray/20 border-circuit-blue/30 primal-border hover:bg-iron-gray/30 transition-all duration-300 text-center">
@@ -56,10 +58,12 @@ export const CommunitySection = () => {
             <p className="text-muted-foreground mb-6">
               Deep discussions, governance proposals, and ecosystem insights.
             </p>
-            <Button variant="outline" className="w-full">
-              Join Forum
-              <ExternalLink className="w-4 h-4 ml-2" />
-            </Button>
+            <a href="https://forum.ceg.vote/invites/PbARfkHL8i">
+              <Button variant="outline" className="w-full">
+                Join Forum
+                <ExternalLink className="w-4 h-4 ml-2" />
+              </Button>
+            </a>
           </Card>
         </div>
         
@@ -117,10 +121,12 @@ export const CommunitySection = () => {
             <p className="text-muted-foreground mb-4">
               Ready to join the conversation?
             </p>
-            <Button variant="default" size="lg">
-              Get Connected
-              <ArrowRight className="w-5 h-5 ml-2" />
-            </Button>
+            <a href="https://t.me/alphaalith">
+              <Button variant="default" size="lg">
+                Get Connected
+                <ArrowRight className="w-5 h-5 ml-2" />
+              </Button>
+            </a>
           </div>
         </div>
       </div>

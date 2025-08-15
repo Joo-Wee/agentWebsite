@@ -3,7 +3,7 @@ import { Clock, Target, Zap, TrendingUp } from "lucide-react";
 
 export const WhyItMattersSection = () => {
   return (
-    <section className="py-24 px-6 bg-gradient-dark">
+    <section id="features" className="py-24 px-6 bg-gradient-dark">
       <div className="container mx-auto max-w-6xl">
         <div className="text-center mb-16">
           <h2 className="font-cinzel text-4xl md:text-5xl font-bold text-pure-white mb-6">
