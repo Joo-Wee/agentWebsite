@@ -32,7 +32,7 @@ const Footer = () => {
   ];
 
   const socialLinks = [
-    { name: "X", icon: X, href: "https://x.com/AlphaAlith" },
+    { name: "X", icon: X, href: "https://x.com/Alpha_Alith_AI" },
     { name: "Email", icon: Mail, href: "mailto:alphaalith@gmail.com" }
   ];
 
