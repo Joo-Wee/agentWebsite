@@ -2,93 +2,71 @@
 
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { ArrowRight, Clock, TrendingUp, Shield, AlertTriangle, Zap, LucideIcon } from "lucide-react";
+import { ArrowRight, Clock, Loader2, AlertTriangle, ExternalLink } from "lucide-react";
 import Header from "@/components/header";
-
-interface Signal {
-  id: string;
-  type: "dApp Launch" | "DAO Vote" | "Bridge Activity" | "Suspicious Activity" | "Liquidity Shift";
-  title: string;
-  summary: string;
-  timestamp: string;
-  confidence: number;
-  icon: LucideIcon;
-  color: string;
-}
-
-const mockSignals: Signal[] = [
-  {
-    id: "1",
-    type: "dApp Launch",
-    title: "Stealth DeFi Protocol Detected",
-    summary: "New AMM protocol deployed on Arbitrum with $2.3M initial liquidity",
-    timestamp: "2 min ago",
-    confidence: 94,
-    icon: TrendingUp,
-    color: "bg-green-500/20 text-green-400 border-green-500/30"
-  },
-  {
-    id: "2",
-    type: "DAO Vote",
-    title: "Critical Governance Proposal",
-    summary: "Uniswap treasury allocation vote ending in 4 hours - 67% participation",
-    timestamp: "5 min ago",
-    confidence: 89,
-    icon: Shield,
-    color: "bg-blue-500/20 text-blue-400 border-blue-500/30"
-  },
-  {
-    id: "3",
-    type: "Suspicious Activity",
-    title: "Whale Movement Alert",
-    summary: "100M USDC moved from unknown wallet to centralized exchange",
-    timestamp: "8 min ago",
-    confidence: 96,
-    icon: AlertTriangle,
-    color: "bg-red-500/20 text-red-400 border-red-500/30"
-  },
-  {
-    id: "4",
-    type: "Bridge Activity",
-    title: "Cross-Chain Volume Surge",
-    summary: "Ethereum to Polygon bridge activity up 340% in last hour",
-    timestamp: "12 min ago",
-    confidence: 91,
-    icon: Zap,
-    color: "bg-purple-500/20 text-purple-400 border-purple-500/30"
-  },
-  {
-    id: "5",
-    type: "Liquidity Shift",
-    title: "Major Pool Rebalancing",
-    summary: "ETH/USDC pool on Uniswap V3 experiencing massive rebalancing",
-    timestamp: "15 min ago",
-    confidence: 87,
-    icon: TrendingUp,
-    color: "bg-cyan-500/20 text-cyan-400 border-cyan-500/30"
-  }
-];
+import { useSignals, Signal } from "@/hooks/useSignals";
 
 const ExploreSignals = () => {
-  const [activeFilter, setActiveFilter] = useState("All");
-  
-  const filteredSignals = activeFilter === "All" 
-    ? mockSignals 
-    : mockSignals.filter(signal => signal.type.includes(activeFilter));
+  const { signals, loading, error, refetch } = useSignals();
 
-  const getSignalTypeColor = (type: string) => {
-    switch (type) {
-      case "dApp Launch": return "bg-green-500/20 text-green-400 border-green-500/30";
-      case "DAO Vote": return "bg-blue-500/20 text-blue-400 border-blue-500/30";
-      case "Suspicious Activity": return "bg-red-500/20 text-red-400 border-red-500/30";
-      case "Bridge Activity": return "bg-purple-500/20 text-purple-400 border-purple-500/30";
-      case "Liquidity Shift": return "bg-cyan-500/20 text-cyan-400 border-cyan-500/30";
-      default: return "bg-gray-500/20 text-gray-400 border-gray-500/30";
-    }
-  };
+  if (loading) {
+    return (
+      <div className="min-h-screen" style={{ backgroundColor: '#0B0B0B' }}>
+        <Header />
+        <main className="pt-20 pb-20 relative z-10">
+          <div className="max-w-7xl mx-auto px-6">
+            <div className="text-center mb-12">
+              <h1 className="text-5xl md:text-6xl font-bold text-white mb-6">
+                Verified Signals. 
+                <span className="text-primary block mt-2">Delivered Fast.</span>
+              </h1>
+              <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
+                Stay ahead of DAO votes, stealth launches, and liquidity shifts — all curated by Alpha.
+              </p>
+            </div>
+            <div className="flex items-center justify-center py-20">
+              <div className="text-center">
+                <Loader2 className="h-12 w-12 text-primary animate-spin mx-auto mb-4" />
+                <p className="text-gray-400 text-lg">Loading real-time signals...</p>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="min-h-screen" style={{ backgroundColor: '#0B0B0B' }}>
+        <Header />
+        <main className="pt-20 pb-20 relative z-10">
+          <div className="max-w-7xl mx-auto px-6">
+            <div className="text-center mb-12">
+              <h1 className="text-5xl md:text-6xl font-bold text-white mb-6">
+                Verified Signals. 
+                <span className="text-primary block mt-2">Delivered Fast.</span>
+              </h1>
+              <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
+                Stay ahead of DAO votes, stealth launches, and liquidity shifts — all curated by Alpha.
+              </p>
+            </div>
+            <div className="flex items-center justify-center py-20">
+              <div className="text-center">
+                <AlertTriangle className="h-12 w-12 text-red-400 mx-auto mb-4" />
+                <p className="text-red-400 text-lg mb-4">Error loading signals</p>
+                <p className="text-gray-400 mb-6">{error}</p>
+                <Button onClick={refetch} className="alpha-button-primary">
+                  Try Again
+                </Button>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen" style={{ backgroundColor: '#0B0B0B' }}>
@@ -121,68 +99,58 @@ const ExploreSignals = () => {
             <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
               Stay ahead of DAO votes, stealth launches, and liquidity shifts — all curated by Alpha.
             </p>
-          </div>
-
-          {/* Filter Tabs */}
-          <div className="mb-8">
-            <Tabs value={activeFilter} onValueChange={setActiveFilter} className="w-full">
-              <TabsList className="grid w-full grid-cols-6 bg-gray-900/50 backdrop-blur-sm">
-                <TabsTrigger value="All" className="data-[state=active]:bg-primary data-[state=active]:text-black">
-                  All
-                </TabsTrigger>
-                <TabsTrigger value="dApp" className="data-[state=active]:bg-primary data-[state=active]:text-black">
-                  dApps
-                </TabsTrigger>
-                <TabsTrigger value="DAO" className="data-[state=active]:bg-primary data-[state=active]:text-black">
-                  DAO Votes
-                </TabsTrigger>
-                <TabsTrigger value="Bridge" className="data-[state=active]:bg-primary data-[state=active]:text-black">
-                  Bridge
-                </TabsTrigger>
-                <TabsTrigger value="Suspicious" className="data-[state=active]:bg-primary data-[state=active]:text-black">
-                  Suspicious
-                </TabsTrigger>
-                <TabsTrigger value="Liquidity" className="data-[state=active]:bg-primary data-[state=active]:text-black">
-                  Liquidity
-                </TabsTrigger>
-              </TabsList>
-            </Tabs>
+            {/* Real-time indicator */}
+            <div className="flex items-center justify-center mt-4 space-x-2">
+              <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+              <span className="text-green-400 text-sm font-medium">Live Updates</span>
+            </div>
+            {/* Signal count */}
+            <div className="mt-4">
+              <span className="text-gray-400 text-lg">
+                {signals.length} active signal{signals.length !== 1 ? 's' : ''}
+              </span>
+            </div>
           </div>
 
           {/* Signals Feed */}
           <div className="space-y-4">
-            {filteredSignals.map((signal) => {
-              const IconComponent = signal.icon;
-              return (
+            {signals.length === 0 ? (
+              <div className="text-center py-20">
+                <div className="text-gray-400 text-lg mb-4">No signals found</div>
+                <p className="text-gray-500">Check back later for new signals.</p>
+              </div>
+            ) : (
+              signals.map((signal) => (
                 <Card 
                   key={signal.id} 
                   className="bg-gray-900/50 border-gray-800 hover:bg-gray-900/70 transition-all duration-300 hover:border-primary/30 cursor-pointer group backdrop-blur-sm"
                 >
                   <CardHeader className="pb-4">
                     <div className="flex items-start justify-between">
-                      <div className="flex items-center space-x-4">
-                        <div className="p-2 rounded-lg bg-primary/10 border border-primary/20">
-                          <IconComponent className="h-5 w-5 text-primary" />
-                        </div>
-                        <div className="flex-1">
-                          <div className="flex items-center space-x-3 mb-2">
-                            <Badge className={getSignalTypeColor(signal.type)}>
-                              {signal.type}
-                            </Badge>
-                            <div className="flex items-center text-gray-400 text-sm">
-                              <Clock className="h-3 w-3 mr-1" />
-                              {signal.timestamp}
-                            </div>
-                            <div className="text-sm text-gray-400">
-                              {signal.confidence}% confidence
-                            </div>
+                      <div className="flex-1">
+                        <div className="flex items-center space-x-3 mb-2">
+                          <div className="flex items-center text-gray-400 text-sm">
+                            <Clock className="h-3 w-3 mr-1" />
+                            {signal.timestamp}
                           </div>
-                          <h3 className="text-lg font-semibold text-white group-hover:text-primary transition-colors">
-                            {signal.title}
-                          </h3>
                         </div>
+                        <h3 className="text-lg font-semibold text-white group-hover:text-primary transition-colors">
+                          {signal.title}
+                        </h3>
                       </div>
-                      <ArrowRight className="h-5 w-5 text-gray-400 group-hover:text-primary transition-colors" />
+                      <div className="flex items-center space-x-2">
+                        {signal.link && (
+                          <a 
+                            href={signal.link} 
+                            target="_blank" 
+                            rel="noopener noreferrer"
+                            className="p-2 rounded-lg bg-primary/10 border border-primary/20 hover:bg-primary/20 transition-colors"
+                          >
+                            <ExternalLink className="h-4 w-4 text-primary" />
+                          </a>
+                        )}
+                        <ArrowRight className="h-5 w-5 text-gray-400 group-hover:text-primary transition-colors" />
+                      </div>
                     </div>
                   </CardHeader>
                   <CardContent>
@@ -191,8 +159,8 @@ const ExploreSignals = () => {
                     </p>
                   </CardContent>
                 </Card>
-              );
-            })}
+              ))
+            )}
           </div>
         </div>
       </main>
