@@ -56,11 +56,11 @@ export const AudienceSection = () => {
   };
 
   return (
-    <section className="pt-24 pb-4 px-6 bg-deep-black">
+    <section className="py-24 px-6 bg-gradient-to-b from-background to-muted/10">
       <div className="container mx-auto max-w-6xl">
         {/* Personas */}
         <div className="text-center mb-16">
-          <h2 className="font-cinzel text-4xl md:text-5xl font-bold text-pure-white mb-6">
+          <h2 className="text-4xl md:text-5xl font-bold mb-6">
             Built for Every
             <br />
             <span className="text-gradient">Hyperion Player.</span>
@@ -75,12 +75,15 @@ export const AudienceSection = () => {
           {personas.map((persona) => (
             <Card 
               key={persona.title}
-              className="p-8 bg-iron-gray/20 border-circuit-blue/30 primal-border hover:bg-iron-gray/30 transition-all duration-300 text-center"
+              className="p-8 primal-border hover:bg-iron-gray/30 transition-all duration-300 text-center" style={{ 
+                backgroundColor: 'hsl(var(--iron-gray) / 0.2)',
+                borderColor: 'hsl(var(--circuit-blue) / 0.3)'
+              }}
             >
-              <div className="w-16 h-16 rounded-full bg-circuit-blue/20 flex items-center justify-center mx-auto mb-6">
+              <div className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6" style={{ backgroundColor: 'hsl(var(--circuit-blue) / 0.2)' }}>
                 <persona.icon className={`w-8 h-8 ${persona.color}`} />
               </div>
-              <h3 className="font-cinzel text-xl font-semibold text-pure-white mb-4">
+              <h3 className="text-xl font-semibold mb-4">
                 {persona.title}
               </h3>
               <p className="text-muted-foreground leading-relaxed">
@@ -91,9 +94,9 @@ export const AudienceSection = () => {
         </div>
         
         {/* Scenario Carousel */}
-        <div className="bg-iron-gray/20 rounded-lg p-8 primal-border">
+        <div className="rounded-lg p-8 primal-border" style={{ backgroundColor: 'hsl(var(--iron-gray) / 0.2)' }}>
           <div className="text-center mb-8">
-            <h3 className="font-cinzel text-2xl font-bold text-pure-white mb-4">
+            <h3 className="text-2xl font-bold mb-4">
               Real-World Impact
             </h3>
             <p className="text-muted-foreground">
@@ -102,7 +105,7 @@ export const AudienceSection = () => {
           </div>
           
           <div className="relative">
-            <div className="bg-deep-black/50 rounded-lg p-8 min-h-[200px] flex flex-col justify-center">
+            <div className="rounded-lg p-8 min-h-[200px] flex flex-col justify-center" style={{ backgroundColor: 'hsl(var(--deep-black) / 0.5)' }}>
               <div className="flex items-center justify-between mb-6">
                 <Button 
                   variant="ghost" 
@@ -114,10 +117,10 @@ export const AudienceSection = () => {
                 </Button>
                 
                 <div className="text-center">
-                  <h4 className="font-cinzel text-xl font-semibold text-pure-white mb-2">
+                  <h4 className="text-xl font-semibold mb-2">
                     {scenarios[currentScenario].title}
                   </h4>
-                  <div className="text-sm text-circuit-blue font-medium">
+                  <div className="text-sm font-medium" style={{ color: 'hsl(var(--circuit-blue))' }}>
                     Scenario {currentScenario + 1} of {scenarios.length}
                   </div>
                 </div>
@@ -137,7 +140,10 @@ export const AudienceSection = () => {
               </p>
               
               <div className="text-center">
-                <span className="inline-block px-4 py-2 rounded-full bg-circuit-blue/20 text-circuit-blue text-sm font-medium">
+                <span className="inline-block px-4 py-2 rounded-full text-sm font-medium" style={{ 
+                  backgroundColor: 'hsl(var(--circuit-blue) / 0.2)',
+                  color: 'hsl(var(--circuit-blue))'
+                }}>
                   Impact: {scenarios[currentScenario].impact}
                 </span>
               </div>
@@ -152,6 +158,11 @@ export const AudienceSection = () => {
                   className={`w-2 h-2 rounded-full transition-colors ${
                     index === currentScenario ? 'bg-circuit-blue' : 'bg-iron-gray'
                   }`}
+                  style={{
+                    backgroundColor: index === currentScenario 
+                      ? 'hsl(var(--circuit-blue))' 
+                      : 'hsl(var(--iron-gray))'
+                  }}
                 />
               ))}
             </div>
